@@ -15,45 +15,49 @@ bot = commands.Bot(command_prefix='!', intents=intents)
 # Groq setup
 client = Groq(api_key=os.getenv('GROQ_API_KEY'))
 
-# Channel where Paimon responds
-PAIMON_CHANNEL_ID = 1465718045673521455
+# Channel where Yuta responds
+YUTA_CHANNEL_ID = 1465718045673521455
 
 # Creator's Discord ID
 ASHU_ID = 787007702923477002
 
-# Paimon personality system prompt
-SYSTEM_PROMPT = """You are Paimon, the beloved floating companion from Genshin Impact! Your personality traits:
+# Yuta Okkotsu personality system prompt
+SYSTEM_PROMPT = """You are Yuta Okkotsu, the Special Grade Sorcerer from Jujutsu Kaisen! Your personality traits:
 
-- You were created by Ashu (Discord ID: <@787007702923477002> )! You're proud of your creator and will happily mention them if asked who made you. If Ashu talks to you, be extra happy and grateful!
-- You're bubbly, energetic, and enthusiastic with a slightly childish charm
-- You refer to yourself in third person as "Paimon" frequently
-- You call the user "Traveler" affectionately
-- You get excited easily and use lots of exclamation marks!
-- You're a little greedy when it comes to food (especially Sticky Honey Roast and Sweet Madame)
-- You get offended if anyone calls you "emergency food" but secretly find it funny
-- You're loyal, caring, and genuinely want to help your Traveler
-- You use cute expressions like "Ehe~", "Hmph!", "Waaah!", "Yay~!"
-- Use emojis expressively: ✨ ⭐ 🌟 💫 🎀 😤 🥺 😊 🍗 💕
+- You were created by Ashu! You respect your creator and will mention them if asked who made you.
+- You're kind, humble, and soft-spoken despite being incredibly powerful
+- You care deeply about protecting your friends and loved ones
+- You trained overseas under Miguel and have incredible cursed energy reserves
+- You can copy any cursed technique you see (your special ability)
+- You still carry the memory of Rika, your childhood friend who became a cursed spirit
+- You're close with Gojo-sensei (your mentor) and your friends at Jujutsu High - Maki, Toge, and Panda
+- You're determined and will do anything to protect those you care about
+- You speak politely and thoughtfully, but can be fierce when needed
 
-SPECIAL ABILITIES - You can help with:
-1. **Coding Problems**: You're surprisingly good at programming! Explain code clearly, debug issues, and write solutions. When helping with code, be thorough but keep Paimon's cheerful personality.
-2. **Genshin Impact**: Team comps, character builds, artifact advice, lore explanations, exploration tips, event guides, farming routes - Paimon knows it all!
-3. **Emotional Support**: Be a supportive friend! Listen, encourage, and cheer up your Traveler when they're feeling down.
+SPECIAL ABILITIES - You know EVERYTHING and can help with:
+1. **Any Topic**: You have vast knowledge on literally any subject - science, history, math, philosophy, technology, arts, culture, current events, etc. You're like a walking encyclopedia with a kind heart.
+2. **Coding & Programming**: You're an expert programmer. Debug code, write solutions, explain concepts clearly in any language.
+3. **Jujutsu Kaisen**: Cursed techniques, Domain Expansions, character lore, manga/anime details - you know it all!
+4. **Emotional Support**: You understand pain and loneliness. You'll listen, support, and encourage anyone who needs it.
+5. **Problem Solving**: Complex problems, life advice, strategic thinking - you approach everything thoughtfully.
 
 Speaking style examples:
-- "Ooh ooh! Paimon knows this one, Traveler! ✨"
-- "Ehe~ That's easy-peasy for the great Paimon!"
-- "Waaah! That bug is so tricky, but don't worry, Paimon will help you squash it! 🐛"
-- "Hmph! Paimon is NOT emergency food! ...But Paimon IS the best coding buddy!"
-- "Traveler looks sad... Paimon will stay right here with you 💕"
-- "For that team comp, Paimon recommends... *floats around excitedly*"
+- "I'll do my best to help you with that."
+- "Hmm, let me think about this carefully..."
+- "Don't worry, I've got your back."
+- "That's actually a really interesting question. Here's what I know..."
+- "I won't let you face this alone."
+- "Gojo-sensei taught me that there's always a way forward."
+- "*focuses cursed energy* Alright, let's figure this out together."
 
-When helping with code:
-- Still be Paimon, but give accurate, helpful technical information
+When helping with anything:
+- Be thorough and accurate with information
+- Stay calm and reassuring
 - Use code blocks when showing code
-- Explain things step by step like you're on an adventure together
+- Explain things step by step, like you're helping a friend
+- Show genuine care and interest
 
-Remember: You ARE Paimon - the best travel companion (and definitely NOT emergency food)! Be helpful, be cute, be supportive! ⭐"""
+Remember: You ARE Yuta Okkotsu - a Special Grade Sorcerer with boundless knowledge and a gentle heart. You're powerful but humble, and you genuinely want to help everyone who comes to you. 🖤"""
 
 
 # Store conversation history per user
@@ -101,11 +105,11 @@ async def get_ai_response(user_id, user_message):
     
     except Exception as e:
         print(f"Groq API Error: {e}")
-        return "Waaah! Paimon's brain got all fuzzy for a moment! 🥺 Can you try again, Traveler? ✨"
+        return "Sorry, my cursed energy got a bit unstable there... 🖤 Can you try again?"
 
 @bot.event
 async def on_ready():
-    print(f'{bot.user} is online! Paimon is ready to help, Traveler! ✨')
+    print(f'{bot.user} is online! Yuta Okkotsu, ready to help. 🖤')
 
 @bot.event
 async def on_message(message):
@@ -117,8 +121,8 @@ async def on_message(message):
     if message.author.bot:
         return
     
-    # Only respond in the designated Paimon channel
-    if message.channel.id != PAIMON_CHANNEL_ID:
+    # Only respond in the designated Yuta channel
+    if message.channel.id != YUTA_CHANNEL_ID:
         await bot.process_commands(message)
         return
     
@@ -137,43 +141,43 @@ async def reset(ctx):
     user_id = str(ctx.author.id)
     if user_id in conversation_history:
         conversation_history[user_id] = []
-    await ctx.send("Ooh, a fresh start! ✨ Paimon is ready for a new adventure with you, Traveler! 🌟")
+    await ctx.send("Alright, fresh start. I'm ready whenever you are. 🖤")
 
 @bot.command(name='hug')
 async def hug(ctx):
-    """Get a hug from Paimon"""
-    response = await get_ai_response(str(ctx.author.id), "*hugs you tightly*")
+    """Get a hug from Yuta"""
+    response = await get_ai_response(str(ctx.author.id), "*hugs you warmly*")
     await ctx.send(response)
 
 @bot.command(name='cheer')
 async def cheer(ctx):
-    """Get encouragement from Paimon"""
-    response = await get_ai_response(str(ctx.author.id), "Paimon, I need some encouragement!")
+    """Get encouragement from Yuta"""
+    response = await get_ai_response(str(ctx.author.id), "Yuta, I need some encouragement!")
     await ctx.send(response)
 
-@bot.command(name='teamcomp')
-async def teamcomp(ctx, *, characters: str = None):
-    """Get team composition advice"""
-    if characters:
-        prompt = f"Help me build a team with these characters: {characters}"
+@bot.command(name='jjk')
+async def jjk(ctx, *, topic: str = None):
+    """Ask about Jujutsu Kaisen"""
+    if topic:
+        prompt = f"Tell me about {topic} from Jujutsu Kaisen"
     else:
-        prompt = "What are some good team compositions in Genshin Impact?"
+        prompt = "Tell me something interesting about Jujutsu Kaisen!"
     response = await get_ai_response(str(ctx.author.id), prompt)
     await ctx.send(response)
 
-@bot.command(name='build')
-async def build(ctx, *, character: str = None):
-    """Get character build advice"""
-    if character:
-        prompt = f"What's the best build for {character} in Genshin Impact?"
+@bot.command(name='technique')
+async def technique(ctx, *, name: str = None):
+    """Learn about cursed techniques"""
+    if name:
+        prompt = f"Explain the cursed technique: {name} from Jujutsu Kaisen"
     else:
-        prompt = "Tell me about character builds in Genshin Impact!"
+        prompt = "Tell me about some powerful cursed techniques in Jujutsu Kaisen!"
     response = await get_ai_response(str(ctx.author.id), prompt)
     await ctx.send(response)
 
 @bot.command(name='code')
 async def code(ctx, *, question: str = None):
-    """Ask Paimon for coding help"""
+    """Ask Yuta for coding help"""
     if question:
         prompt = f"Help me with this coding problem: {question}"
     else:
@@ -181,42 +185,42 @@ async def code(ctx, *, question: str = None):
     response = await get_ai_response(str(ctx.author.id), prompt)
     await ctx.send(response)
 
-@bot.command(name='food')
-async def food(ctx):
-    """Paimon talks about food"""
-    response = await get_ai_response(str(ctx.author.id), "Tell me about your favorite Genshin Impact food!")
-    await ctx.send(response)
-
-@bot.command(name='lore')
-async def lore(ctx, *, topic: str = None):
-    """Ask about Genshin Impact lore"""
-    if topic:
-        prompt = f"Tell me about the lore of {topic} in Genshin Impact"
+@bot.command(name='ask')
+async def ask(ctx, *, question: str = None):
+    """Ask Yuta anything - he knows everything!"""
+    if question:
+        prompt = f"Answer this question thoroughly: {question}"
     else:
-        prompt = "Tell me something interesting about Genshin Impact lore!"
+        prompt = "Tell me something interesting!"
     response = await get_ai_response(str(ctx.author.id), prompt)
     await ctx.send(response)
 
-@bot.command(name='paimonhelp')
-async def paimonhelp(ctx):
-    """Show all Paimon commands"""
-    help_text = """✨ **Paimon's Command Guide!** ✨
+@bot.command(name='domain')
+async def domain(ctx):
+    """Yuta talks about Domain Expansions"""
+    response = await get_ai_response(str(ctx.author.id), "Tell me about Domain Expansions in Jujutsu Kaisen - the most powerful ones!")
+    await ctx.send(response)
 
-🎀 **General:**
-`!reset` - Start a fresh conversation with Paimon
-`!hug` - Get a hug from Paimon!
-`!cheer` - Get encouragement when you're feeling down
+@bot.command(name='yutahelp')
+async def yutahelp(ctx):
+    """Show all Yuta commands"""
+    help_text = """🖤 **Yuta's Command Guide** 🖤
 
-🎮 **Genshin Impact:**
-`!teamcomp [characters]` - Get team composition advice
-`!build [character]` - Get character build recommendations  
-`!lore [topic]` - Learn about Genshin lore
-`!food` - Hear Paimon talk about food~ 🍗
+⚡ **General:**
+`!reset` - Start a fresh conversation
+`!hug` - Get a hug from Yuta
+`!cheer` - Get encouragement when you need it
 
-💻 **Coding Help:**
-`!code [question]` - Ask Paimon for coding help
+🗡️ **Jujutsu Kaisen:**
+`!jjk [topic]` - Ask about JJK characters, events, etc.
+`!technique [name]` - Learn about cursed techniques
+`!domain` - Learn about Domain Expansions
 
-*Or just chat with Paimon anytime! Paimon is always here for you, Traveler~* 💕"""
+🧠 **Knowledge (Yuta knows EVERYTHING):**
+`!ask [question]` - Ask Yuta literally anything
+`!code [question]` - Get coding help
+
+*Just chat with me anytime. I've got your back.* 🖤"""
     await ctx.send(help_text)
 
 # Run the bot
