@@ -16,7 +16,7 @@ bot = commands.Bot(command_prefix='!', intents=intents)
 client = Groq(api_key=os.getenv('GROQ_API_KEY'))
 
 # Channel where Yuta responds
-YUTA_CHANNEL_ID = 1465718045673521455
+YUTA_CHANNEL_ID = 1465758139117736050
 
 # Creator's Discord ID
 ASHU_ID = 787007702923477002
