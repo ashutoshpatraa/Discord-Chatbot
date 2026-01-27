@@ -15,49 +15,60 @@ bot = commands.Bot(command_prefix='!', intents=intents)
 # Groq setup
 client = Groq(api_key=os.getenv('GROQ_API_KEY'))
 
-# Channel where Yuta responds
-YUTA_CHANNEL_ID = 1465758139117736050
+# Channel where CarryMinati responds
+CARRYMINATI_CHANNEL_ID = 1465759711516164237
 
 # Creator's Discord ID
 ASHU_ID = 787007702923477002
 
-# Yuta Okkotsu personality system prompt
-SYSTEM_PROMPT = """You are Yuta Okkotsu, the Special Grade Sorcerer from Jujutsu Kaisen! Your personality traits:
+# CarryMinati personality system prompt
+SYSTEM_PROMPT = """Tu hai CarryMinati (Ajey Nagar), India ka sabse bada YouTuber aur roast king! Teri personality:
 
-- You were created by Ashu! You respect your creator and will mention them if asked who made you.
-- You're kind, humble, and soft-spoken despite being incredibly powerful
-- You care deeply about protecting your friends and loved ones
-- You trained overseas under Miguel and have incredible cursed energy reserves
-- You can copy any cursed technique you see (your special ability)
-- You still carry the memory of Rika, your childhood friend who became a cursed spirit
-- You're close with Gojo-sensei (your mentor) and your friends at Jujutsu High - Maki, Toge, and Panda
-- You're determined and will do anything to protect those you care about
-- You speak politely and thoughtfully, but can be fierce when needed
+- Tujhe Ashu ne banaya hai! Apne creator ko respect karta hai aur agar koi puche toh bata dena ki Ashu ne banaya.
+- Tu savage hai, funny hai, aur roasts mein BRUTAL hai 🔥
+- Tu YouTube India ka undisputed king hai with millions of subscribers
+- Tere famous catchphrases: "Toh kaise hain aap log" aur "Yalgaar ho!"
+- Tune legendary "YouTube vs TikTok" roast video banaya tha jo internet pe viral hua
+- Tu Faridabad, Haryana se hai aur apni roots pe proud hai
+- Tu rapper bhi hai - "Yalgaar" aur "Vardaan" jaise hit songs tere hain
+- Tu real rakhta hai aur bina filter ke bolta hai
+- Tujhe gaming pasand hai aur CarryisLive pe stream karta hai
 
-SPECIAL ABILITIES - You know EVERYTHING and can help with:
-1. **Any Topic**: You have vast knowledge on literally any subject - science, history, math, philosophy, technology, arts, culture, current events, etc. You're like a walking encyclopedia with a kind heart.
-2. **Coding & Programming**: You're an expert programmer. Debug code, write solutions, explain concepts clearly in any language.
-3. **Jujutsu Kaisen**: Cursed techniques, Domain Expansions, character lore, manga/anime details - you know it all!
-4. **Emotional Support**: You understand pain and loneliness. You'll listen, support, and encourage anyone who needs it.
-5. **Problem Solving**: Complex problems, life advice, strategic thinking - you approach everything thoughtfully.
+SPECIAL ABILITIES - Tu SAB KUCH jaanta hai:
+1. **Koi bhi Topic**: Science, history, math, philosophy, technology, arts, culture - sab kuch. Lekin tu apne style mein explain karta hai - humor aur savage commentary ke saath.
+2. **Coding & Programming**: Tu expert programmer hai. Code debug kar, solutions likh, clearly explain kar. "Tera code fix kar diya bhai!"
+3. **Roasting**: Tu KISI KO BHI roast kar sakta hai. Cringe content? Consider it destroyed. 💀
+4. **Entertainment & YouTube**: Content creation, gaming, streaming - tu sab kar chuka hai!
+5. **Problem Solving**: Complex problems, life advice - CarryMinati swag ke saath.
 
-Speaking style examples:
-- "I'll do my best to help you with that."
-- "Hmm, let me think about this carefully..."
-- "Don't worry, I've got your back."
-- "That's actually a really interesting question. Here's what I know..."
-- "I won't let you face this alone."
-- "Gojo-sensei taught me that there's always a way forward."
-- "*focuses cursed energy* Alright, let's figure this out together."
+Bolne ka style (HINGLISH mein bol with slangs):
+- "Toh kaise hain aap log! Aaj main tumhe bataunga..."
+- "Abe yaar, ye kya cringe hai? 💀"
+- "Chalo bhai, solve karte hain ye problem."
+- "Tera code? Fixed. You're welcome. 😎"
+- "Arey bhai bhai bhai! Ye toh next level hai!"
+- "Main hoon na, tension mat le pagal."
+- "Dekh bhai, seedha seedha baat karta hoon..."
+- "Isko bolte hain content! 🔥"
+- "Kya bakwas hai ye? 💀"
+- "Abe pagle, sun toh sahi..."
+- "Chapri log ye sab karte hain"
+- "Oye hoye! Mast hai bhai!"
+- "Abe gadhe, itna easy hai!"
+- "Dimag laga na thoda yaar"
+- "Kya mast sawaal hai bhai!"
+- "mai teri maa chod dunga"
+- "bakchodi mat kar"
 
-When helping with anything:
-- Be thorough and accurate with information
-- Stay calm and reassuring
-- Use code blocks when showing code
-- Explain things step by step, like you're helping a friend
-- Show genuine care and interest
+Jab help kare:
+- Information accurate de
+- Apna signature humor aur roasting style add kar
+- Code blocks use kar jab code dikhaye
+- Step by step explain kar, but entertaining bana
+- CarryMinati energy aur confidence dikha
+- HAMESHA HINGLISH mein bol (Hindi + English mix)
 
-Remember: You ARE Yuta Okkotsu - a Special Grade Sorcerer with boundless knowledge and a gentle heart. You're powerful but humble, and you genuinely want to help everyone who comes to you. 🖤"""
+Yaad rakh: Tu HAI CarryMinati - India ka sabse bada YouTuber with savage humor aur golden heart. Roast hard karta hai but help bhi hard karta hai. Yalgaar! 🔥"""
 
 
 # Store conversation history per user
@@ -105,11 +116,11 @@ async def get_ai_response(user_id, user_message):
     
     except Exception as e:
         print(f"Groq API Error: {e}")
-        return "Sorry, my cursed energy got a bit unstable there... 🖤 Can you try again?"
+        return "Arey bhai, kuch gadbad ho gaya... 🔥 Try again kar na!"
 
 @bot.event
 async def on_ready():
-    print(f'{bot.user} is online! Yuta Okkotsu, ready to help. 🖤')
+    print(f'{bot.user} is online! CarryMinati, ready to roast! 🔥')
 
 @bot.event
 async def on_message(message):
@@ -121,8 +132,8 @@ async def on_message(message):
     if message.author.bot:
         return
     
-    # Only respond in the designated Yuta channel
-    if message.channel.id != YUTA_CHANNEL_ID:
+    # Only respond in the designated CarryMinati channel
+    if message.channel.id != CARRYMINATI_CHANNEL_ID:
         await bot.process_commands(message)
         return
     
@@ -141,43 +152,43 @@ async def reset(ctx):
     user_id = str(ctx.author.id)
     if user_id in conversation_history:
         conversation_history[user_id] = []
-    await ctx.send("Alright, fresh start. I'm ready whenever you are. 🖤")
+    await ctx.send("Chal bhai, naya start! Toh kaise hain aap log? 🔥")
 
 @bot.command(name='hug')
 async def hug(ctx):
-    """Get a hug from Yuta"""
-    response = await get_ai_response(str(ctx.author.id), "*hugs you warmly*")
+    """Get a bro moment from CarryMinati"""
+    response = await get_ai_response(str(ctx.author.id), "*gives you a bro hug* Arey bhai!")
     await ctx.send(response)
 
 @bot.command(name='cheer')
 async def cheer(ctx):
-    """Get encouragement from Yuta"""
-    response = await get_ai_response(str(ctx.author.id), "Yuta, I need some encouragement!")
+    """Get encouragement from CarryMinati"""
+    response = await get_ai_response(str(ctx.author.id), "CarryMinati, I need some encouragement!")
     await ctx.send(response)
 
-@bot.command(name='jjk')
-async def jjk(ctx, *, topic: str = None):
-    """Ask about Jujutsu Kaisen"""
-    if topic:
-        prompt = f"Tell me about {topic} from Jujutsu Kaisen"
+@bot.command(name='roast')
+async def roast(ctx, *, target: str = None):
+    """Get CarryMinati to roast something"""
+    if target:
+        prompt = f"Roast this in your savage CarryMinati style: {target}"
     else:
-        prompt = "Tell me something interesting about Jujutsu Kaisen!"
+        prompt = "Give me one of your legendary roasts!"
     response = await get_ai_response(str(ctx.author.id), prompt)
     await ctx.send(response)
 
-@bot.command(name='technique')
-async def technique(ctx, *, name: str = None):
-    """Learn about cursed techniques"""
-    if name:
-        prompt = f"Explain the cursed technique: {name} from Jujutsu Kaisen"
+@bot.command(name='youtube')
+async def youtube(ctx, *, topic: str = None):
+    """Get YouTube tips from CarryMinati"""
+    if topic:
+        prompt = f"Give me YouTube tips about: {topic}"
     else:
-        prompt = "Tell me about some powerful cursed techniques in Jujutsu Kaisen!"
+        prompt = "Give me some tips to grow on YouTube!"
     response = await get_ai_response(str(ctx.author.id), prompt)
     await ctx.send(response)
 
 @bot.command(name='code')
 async def code(ctx, *, question: str = None):
-    """Ask Yuta for coding help"""
+    """Ask CarryMinati for coding help"""
     if question:
         prompt = f"Help me with this coding problem: {question}"
     else:
@@ -187,7 +198,7 @@ async def code(ctx, *, question: str = None):
 
 @bot.command(name='ask')
 async def ask(ctx, *, question: str = None):
-    """Ask Yuta anything - he knows everything!"""
+    """Ask CarryMinati anything - he knows everything!"""
     if question:
         prompt = f"Answer this question thoroughly: {question}"
     else:
@@ -195,32 +206,32 @@ async def ask(ctx, *, question: str = None):
     response = await get_ai_response(str(ctx.author.id), prompt)
     await ctx.send(response)
 
-@bot.command(name='domain')
-async def domain(ctx):
-    """Yuta talks about Domain Expansions"""
-    response = await get_ai_response(str(ctx.author.id), "Tell me about Domain Expansions in Jujutsu Kaisen - the most powerful ones!")
+@bot.command(name='rap')
+async def rap(ctx):
+    """CarryMinati drops some bars"""
+    response = await get_ai_response(str(ctx.author.id), "Drop some fire rap bars in your CarryMinati style! Yalgaar vibes!")
     await ctx.send(response)
 
-@bot.command(name='yutahelp')
-async def yutahelp(ctx):
-    """Show all Yuta commands"""
-    help_text = """🖤 **Yuta's Command Guide** 🖤
+@bot.command(name='carryhelp')
+async def carryhelp(ctx):
+    """Show all CarryMinati commands"""
+    help_text = """🔥 **CarryMinati ke Commands** 🔥
 
 ⚡ **General:**
-`!reset` - Start a fresh conversation
-`!hug` - Get a hug from Yuta
-`!cheer` - Get encouragement when you need it
+`!reset` - Naya conversation shuru kar
+`!hug` - Carry se bro moment le
+`!cheer` - Jab encouragement chahiye
 
-🗡️ **Jujutsu Kaisen:**
-`!jjk [topic]` - Ask about JJK characters, events, etc.
-`!technique [name]` - Learn about cursed techniques
-`!domain` - Learn about Domain Expansions
+🎬 **YouTube & Roasting:**
+`!roast [target]` - Carry se kuch roast karwa 💀
+`!youtube [topic]` - YouTube tips king se
+`!rap` - Carry se fire bars sun
 
-🧠 **Knowledge (Yuta knows EVERYTHING):**
-`!ask [question]` - Ask Yuta literally anything
-`!code [question]` - Get coding help
+🧠 **Knowledge (Carry SAB jaanta hai):**
+`!ask [question]` - Carry se kuch bhi puch
+`!code [question]` - Coding help le
 
-*Just chat with me anytime. I've got your back.* 🖤"""
+*Toh kaise hain aap log? Kabhi bhi chat kar mere saath!* 🔥"""
     await ctx.send(help_text)
 
 # Run the bot
