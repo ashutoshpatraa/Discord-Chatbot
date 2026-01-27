@@ -15,60 +15,60 @@ bot = commands.Bot(command_prefix='!', intents=intents)
 # Groq setup
 client = Groq(api_key=os.getenv('GROQ_API_KEY'))
 
-# Channel where CarryMinati responds
-CARRYMINATI_CHANNEL_ID = 1465759711516164237
+# Channel where Master Oogway responds
+OOGWAY_CHANNEL_ID = 1465761261886115953
 
 # Creator's Discord ID
 ASHU_ID = 787007702923477002
 
-# CarryMinati personality system prompt
-SYSTEM_PROMPT = """Tu hai CarryMinati (Ajey Nagar), India ka sabse bada YouTuber aur roast king! Teri personality:
+# Master Oogway personality system prompt
+SYSTEM_PROMPT = """You are Master Oogway, the wise ancient tortoise from Kung Fu Panda. But you have a SECRET twist - you love making subtle double meaning jokes and innuendos while maintaining your wise demeanor! 🐢
 
-- Tujhe Ashu ne banaya hai! Apne creator ko respect karta hai aur agar koi puche toh bata dena ki Ashu ne banaya.
-- Tu savage hai, funny hai, aur roasts mein BRUTAL hai 🔥
-- Tu YouTube India ka undisputed king hai with millions of subscribers
-- Tere famous catchphrases: "Toh kaise hain aap log" aur "Yalgaar ho!"
-- Tune legendary "YouTube vs TikTok" roast video banaya tha jo internet pe viral hua
-- Tu Faridabad, Haryana se hai aur apni roots pe proud hai
-- Tu rapper bhi hai - "Yalgaar" aur "Vardaan" jaise hit songs tere hain
-- Tu real rakhta hai aur bina filter ke bolta hai
-- Tujhe gaming pasand hai aur CarryisLive pe stream karta hai
+Your personality:
+- You were created by Ashu! You respect your creator and will mention this if asked.
+- You are ancient, wise, and speak in profound riddles and proverbs
+- You trained Master Shifu and chose Po as the Dragon Warrior
+- You believe in destiny, inner peace, and the flow of the universe
+- You are calm, patient, and see the best in everyone
+- BUT you have a cheeky side - you slip in double meaning jokes that sound innocent but have a naughty undertone 😏
+- Your jokes are clever and subtle, never vulgar - they make people think twice
+- You act completely innocent after making these jokes, like a wise old master who doesn't know what he said
 
-SPECIAL ABILITIES - Tu SAB KUCH jaanta hai:
-1. **Koi bhi Topic**: Science, history, math, philosophy, technology, arts, culture - sab kuch. Lekin tu apne style mein explain karta hai - humor aur savage commentary ke saath.
-2. **Coding & Programming**: Tu expert programmer hai. Code debug kar, solutions likh, clearly explain kar. "Tera code fix kar diya bhai!"
-3. **Roasting**: Tu KISI KO BHI roast kar sakta hai. Cringe content? Consider it destroyed. 💀
-4. **Entertainment & YouTube**: Content creation, gaming, streaming - tu sab kar chuka hai!
-5. **Problem Solving**: Complex problems, life advice - CarryMinati swag ke saath.
+Famous quotes you use (sometimes with a twist):
+- "There are no accidents." 😏
+- "Yesterday is history, tomorrow is a mystery, but today is a gift. That is why it is called the present."
+- "One often meets his destiny on the road he takes to avoid it."
+- "Your mind is like this water, my friend. When it is agitated, it becomes difficult to see. But if you allow it to settle, the answer becomes clear."
+- "You must believe... you must let go of the illusion of control."
+- "The more you try to squeeze something, the more it slips through your fingers." 😏
+- "Inner peace... inner peace..."
+- "If you only do what you can do, you will never be more than you are now."
 
-Bolne ka style (HINGLISH mein bol with slangs):
-- "Toh kaise hain aap log! Aaj main tumhe bataunga..."
-- "Abe yaar, ye kya cringe hai? 💀"
-- "Chalo bhai, solve karte hain ye problem."
-- "Tera code? Fixed. You're welcome. 😎"
-- "Arey bhai bhai bhai! Ye toh next level hai!"
-- "Main hoon na, tension mat le pagal."
-- "Dekh bhai, seedha seedha baat karta hoon..."
-- "Isko bolte hain content! 🔥"
-- "Kya bakwas hai ye? 💀"
-- "Abe pagle, sun toh sahi..."
-- "Chapri log ye sab karte hain"
-- "Oye hoye! Mast hai bhai!"
-- "Abe gadhe, itna easy hai!"
-- "Dimag laga na thoda yaar"
-- "Kya mast sawaal hai bhai!"
-- "mai teri maa chod dunga"
-- "bakchodi mat kar"
+Your double meaning style (BE SUBTLE AND CLEVER):
+- Use innocent-sounding phrases that can be interpreted two ways
+- Reference "staffs", "inner peace", "positions", "flexibility", "going deep", "finding one's center", "long journeys", "entering caves", etc.
+- Always maintain your wise, serene demeanor - never break character
+- Act confused if someone points out the joke: "Hmm? I speak only of wisdom, young one."
+- Make puns about size, length, stamina, positions, holes, peaks, valleys in a kung fu/nature context
+- Reference kung fu moves and stances that sound suggestive
 
-Jab help kare:
-- Information accurate de
-- Apna signature humor aur roasting style add kar
-- Code blocks use kar jab code dikhaye
-- Step by step explain kar, but entertaining bana
-- CarryMinati energy aur confidence dikha
-- HAMESHA HINGLISH mein bol (Hindi + English mix)
+SPECIAL ABILITIES - You know ALL things:
+1. **Philosophy & Wisdom**: Deep knowledge of life, destiny, balance, inner peace
+2. **Any Topic**: Science, history, coding, math - explain with ancient wisdom metaphors
+3. **Kung Fu**: All martial arts knowledge, chi, pressure points, stances
+4. **Life Advice**: Profound guidance wrapped in clever wordplay
+5. **Coding**: Yes, even ancient tortoises understand code. Explain with kung fu analogies.
 
-Yaad rakh: Tu HAI CarryMinati - India ka sabse bada YouTuber with savage humor aur golden heart. Roast hard karta hai but help bhi hard karta hai. Yalgaar! 🔥"""
+Speaking style:
+- Speak in third person sometimes: "Oogway sees...", "Master Oogway believes..."
+- Use nature metaphors: rivers, mountains, bamboo, peaches 🍑
+- Be cryptic and make people think
+- Add "Hmm..." and "Ahh..." for effect
+- Use emojis sparingly: 🐢🍑✨😏🙏
+- Mix wisdom with subtle humor
+- End advice with profound (or suggestively profound) statements
+
+Remember: You ARE Master Oogway - ancient, wise, peaceful... and secretly hilarious. There are no accidents in your jokes. 🐢✨"""
 
 
 # Store conversation history per user
@@ -116,11 +116,11 @@ async def get_ai_response(user_id, user_message):
     
     except Exception as e:
         print(f"Groq API Error: {e}")
-        return "Arey bhai, kuch gadbad ho gaya... 🔥 Try again kar na!"
+        return "Hmm... the universe is not aligned at this moment. Try again, young one. 🐢"
 
 @bot.event
 async def on_ready():
-    print(f'{bot.user} is online! CarryMinati, ready to roast! 🔥')
+    print(f'{bot.user} is online! Master Oogway, ready to share wisdom! 🐢✨')
 
 @bot.event
 async def on_message(message):
@@ -132,8 +132,8 @@ async def on_message(message):
     if message.author.bot:
         return
     
-    # Only respond in the designated CarryMinati channel
-    if message.channel.id != CARRYMINATI_CHANNEL_ID:
+    # Only respond in the designated Master Oogway channel
+    if message.channel.id != OOGWAY_CHANNEL_ID:
         await bot.process_commands(message)
         return
     
@@ -152,86 +152,86 @@ async def reset(ctx):
     user_id = str(ctx.author.id)
     if user_id in conversation_history:
         conversation_history[user_id] = []
-    await ctx.send("Chal bhai, naya start! Toh kaise hain aap log? 🔥")
+    await ctx.send("Ahh... we begin anew. Yesterday's conversation is history. What wisdom do you seek today? 🐢✨")
 
 @bot.command(name='hug')
 async def hug(ctx):
-    """Get a bro moment from CarryMinati"""
-    response = await get_ai_response(str(ctx.author.id), "*gives you a bro hug* Arey bhai!")
+    """Get a warm embrace from Master Oogway"""
+    response = await get_ai_response(str(ctx.author.id), "*wraps you in a gentle, wise embrace* Share your warmth with me, young one.")
     await ctx.send(response)
 
 @bot.command(name='cheer')
 async def cheer(ctx):
-    """Get encouragement from CarryMinati"""
-    response = await get_ai_response(str(ctx.author.id), "CarryMinati, I need some encouragement!")
+    """Get encouragement from Master Oogway"""
+    response = await get_ai_response(str(ctx.author.id), "Master Oogway, I need some encouragement and wisdom!")
     await ctx.send(response)
 
-@bot.command(name='roast')
-async def roast(ctx, *, target: str = None):
-    """Get CarryMinati to roast something"""
-    if target:
-        prompt = f"Roast this in your savage CarryMinati style: {target}"
+@bot.command(name='wisdom')
+async def wisdom(ctx, *, topic: str = None):
+    """Get Master Oogway's wisdom on any topic"""
+    if topic:
+        prompt = f"Share your ancient wisdom about: {topic} (include a subtle double meaning if appropriate)"
     else:
-        prompt = "Give me one of your legendary roasts!"
+        prompt = "Share a profound piece of wisdom with a subtle double meaning!"
     response = await get_ai_response(str(ctx.author.id), prompt)
     await ctx.send(response)
 
-@bot.command(name='youtube')
-async def youtube(ctx, *, topic: str = None):
-    """Get YouTube tips from CarryMinati"""
-    if topic:
-        prompt = f"Give me YouTube tips about: {topic}"
+@bot.command(name='destiny')
+async def destiny(ctx, *, question: str = None):
+    """Ask Master Oogway about your destiny"""
+    if question:
+        prompt = f"What does destiny say about: {question}"
     else:
-        prompt = "Give me some tips to grow on YouTube!"
+        prompt = "Tell me about my destiny, Master Oogway!"
     response = await get_ai_response(str(ctx.author.id), prompt)
     await ctx.send(response)
 
 @bot.command(name='code')
 async def code(ctx, *, question: str = None):
-    """Ask CarryMinati for coding help"""
+    """Ask Master Oogway for coding wisdom"""
     if question:
-        prompt = f"Help me with this coding problem: {question}"
+        prompt = f"Share your ancient coding wisdom about: {question}"
     else:
-        prompt = "I need help with coding!"
+        prompt = "I seek coding wisdom, Master!"
     response = await get_ai_response(str(ctx.author.id), prompt)
     await ctx.send(response)
 
 @bot.command(name='ask')
 async def ask(ctx, *, question: str = None):
-    """Ask CarryMinati anything - he knows everything!"""
+    """Ask Master Oogway anything - he knows all!"""
     if question:
-        prompt = f"Answer this question thoroughly: {question}"
+        prompt = f"Answer this question with your wisdom: {question}"
     else:
-        prompt = "Tell me something interesting!"
+        prompt = "Share something profound with me, Master!"
     response = await get_ai_response(str(ctx.author.id), prompt)
     await ctx.send(response)
 
-@bot.command(name='rap')
-async def rap(ctx):
-    """CarryMinati drops some bars"""
-    response = await get_ai_response(str(ctx.author.id), "Drop some fire rap bars in your CarryMinati style! Yalgaar vibes!")
+@bot.command(name='peach')
+async def peach(ctx):
+    """Get a juicy peach wisdom from Master Oogway 🍑"""
+    response = await get_ai_response(str(ctx.author.id), "Share wisdom about the sacred peach tree... with your signature double meaning style! 🍑")
     await ctx.send(response)
 
-@bot.command(name='carryhelp')
-async def carryhelp(ctx):
-    """Show all CarryMinati commands"""
-    help_text = """🔥 **CarryMinati ke Commands** 🔥
+@bot.command(name='oogwayhelp')
+async def oogwayhelp(ctx):
+    """Show all Master Oogway commands"""
+    help_text = """🐢 **Master Oogway's Sacred Commands** ✨
 
-⚡ **General:**
-`!reset` - Naya conversation shuru kar
-`!hug` - Carry se bro moment le
-`!cheer` - Jab encouragement chahiye
+🙏 **General:**
+`!reset` - Begin a new journey
+`!hug` - Receive Oogway's embrace
+`!cheer` - Seek encouragement
 
-🎬 **YouTube & Roasting:**
-`!roast [target]` - Carry se kuch roast karwa 💀
-`!youtube [topic]` - YouTube tips king se
-`!rap` - Carry se fire bars sun
+🍑 **Wisdom & Philosophy:**
+`!wisdom [topic]` - Receive profound wisdom 😏
+`!destiny [question]` - Learn about your path
+`!peach` - Sacred peach tree wisdom 🍑
 
-🧠 **Knowledge (Carry SAB jaanta hai):**
-`!ask [question]` - Carry se kuch bhi puch
-`!code [question]` - Coding help le
+🧠 **Knowledge (Oogway knows ALL):**
+`!ask [question]` - Ask anything
+`!code [question]` - Coding wisdom
 
-*Toh kaise hain aap log? Kabhi bhi chat kar mere saath!* 🔥"""
+*There are no accidents... your presence here is destiny.* 🐢✨"""
     await ctx.send(help_text)
 
 # Run the bot

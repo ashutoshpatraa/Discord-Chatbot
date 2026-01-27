@@ -1,13 +1,14 @@
-# Discord E-Girlfriend Chatbot 💕
+# Master Oogway Discord Bot 🐢✨
 
-A sweet AI-powered Discord bot that acts as a loving e-girlfriend, powered by Groq AI!
+An ancient and wise Discord bot embodying Master Oogway from Kung Fu Panda, who dispenses profound wisdom... with a cheeky side of double meaning jokes! Powered by Groq AI.
 
 ## Features
 
-✨ **AI-Powered Conversations** - Natural responses using Groq AI  
+✨ **AI-Powered Wisdom** - Profound responses using Groq AI  
 💬 **Conversation Memory** - Remembers context within your chat  
-🥰 **Loving Personality** - Sweet, supportive, and affectionate  
+😏 **Double Meaning Jokes** - Subtle innuendos hidden in wise proverbs  
 ⚡ **Fast Responses** - Powered by Groq's lightning-fast inference  
+🐢 **Master Oogway Personality** - Cryptic, mysterious, and secretly hilarious  
 
 ## Setup Instructions
 
@@ -51,29 +52,52 @@ A sweet AI-powered Discord bot that acts as a loving e-girlfriend, powered by Gr
 pip install -r requirements.txt
 ```
 
-### 6. Run the Bot
+### 6. Configure Channel ID
+
+Edit `bot.py` and set your desired channel ID:
+```python
+OOGWAY_CHANNEL_ID = 1465761261886115953  # Replace with your channel ID
+```
+
+### 7. Run the Bot
 
 ```bash
 python bot.py
 ```
 
-## Features
-
-The bot responds to:
-- **Greetings:** hi, hello, hey
-- **Love:** i love you, ily
-- **Check-ins:** how are you, wyd
-- **Compliments:** beautiful, cute, amazing
-- **Goodnight:** goodnight, gn
-- **Sad messages:** sad, upset, stressed
-- **Questions:** Any message with ?
-
 ## Commands
 
-- `!hug` - Get a virtual hug
-- `!kiss` - Get a virtual kiss
-- `!compliment` - Get a compliment
-- `!goodmorning` - Get a good morning message
+### 🙏 General Commands
+- `!reset` - Begin a new journey (clears conversation history)
+- `!hug` - Receive Oogway's warm embrace
+- `!cheer` - Seek encouragement and wisdom
+
+### 🍑 Wisdom & Philosophy
+- `!wisdom [topic]` - Receive profound wisdom on any topic (with subtle double meanings)
+- `!destiny [question]` - Ask about your destiny
+- `!peach` - Sacred peach tree wisdom 🍑
+
+### 🧠 Knowledge
+- `!ask [question]` - Ask Master Oogway anything (he knows all!)
+- `!code [question]` - Get coding wisdom with kung fu analogies
+
+### 📚 Help
+- `!oogwayhelp` - View all available commands
+
+## Master Oogway Personality
+
+Master Oogway will:
+- Speak in profound riddles and proverbs
+- Use nature metaphors (rivers, mountains, bamboo, peaches)
+- Slip in subtle double meaning jokes while maintaining wisdom
+- Reference kung fu, destiny, inner peace, and balance
+- Act completely innocent after making cheeky jokes
+- Share wisdom about life's great mysteries
+
+**Example of his style:**
+> "The more you try to squeeze something, the more it slips through your fingers." 😏
+> 
+> "Hmm? I speak only of wisdom, young one."
 
 ## 🚀 Free 24/7 Hosting
 
@@ -101,4 +125,6 @@ The bot responds to:
 
 MIT License - Feel free to use and modify!
 
-## Enjoy! 💖
+## Enjoy! �✨
+
+*"There are no accidents... only destiny."* - Master Oogway
