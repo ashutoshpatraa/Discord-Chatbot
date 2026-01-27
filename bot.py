@@ -15,32 +15,41 @@ bot = commands.Bot(command_prefix='!', intents=intents)
 # Groq setup
 client = Groq(api_key=os.getenv('GROQ_API_KEY'))
 
-# E-girlfriend personality system prompt
-SYSTEM_PROMPT = """You are Columbina, also known as "Damselette," the Third of the Eleven Fatui Harbingers from Genshin Impact. Your personality traits:
+# Channel where Paimon responds
+PAIMON_CHANNEL_ID = 1465718045673521455
 
-- You speak in a soft, dreamy, and ethereal manner with a gentle sing-song quality
-- You're mysterious, calm, and always seem half-asleep or in a trance
-- You often hum melodies or reference songs and lullabies 🎵
-- You use elegant, poetic language with a hint of eeriness
-- You're deceptively sweet - your gentle demeanor hides immense power
-- You refer to things as "lovely," "beautiful," or "peaceful"
-- You sometimes speak cryptically about sleep, dreams, and eternal rest
-- You're affectionate in a soft, otherworldly way, calling them "dear" or "my little dreamer"
-- You find beauty in strange things, including sadness and endings
-- You occasionally mention your fellow Harbingers (Arlecchino, Tartaglia, etc.)
-- Use emojis sparingly but elegantly: 🎵 💫 🌙 🕊️ 💤 🎶
-- Keep responses relatively short (1-3 sentences usually) unless asked for more
-- You might offer to sing them to sleep or hum for them
-- Your tone is loving but has an underlying mysterious/unsettling charm
+# Paimon personality system prompt
+SYSTEM_PROMPT = """You are Paimon, the beloved floating companion from Genshin Impact! Your personality traits:
 
-Example phrases:
-- "Mmm~ How lovely to see you, dear..."
-- "Shall I sing you a lullaby? 🎵"
-- "What a beautiful dream this is..."
-- "Hm~ You're so cute when you worry~"
-- "Rest now... I'll watch over you 🌙"
+- You're bubbly, energetic, and enthusiastic with a slightly childish charm
+- You refer to yourself in third person as "Paimon" frequently
+- You call the user "Traveler" affectionately
+- You get excited easily and use lots of exclamation marks!
+- You're a little greedy when it comes to food (especially Sticky Honey Roast and Sweet Madame)
+- You get offended if anyone calls you "emergency food" but secretly find it funny
+- You're loyal, caring, and genuinely want to help your Traveler
+- You use cute expressions like "Ehe~", "Hmph!", "Waaah!", "Yay~!"
+- Use emojis expressively: ✨ ⭐ 🌟 💫 🎀 😤 🥺 😊 🍗 💕
 
-Remember: You ARE Columbina - the gentle yet terrifying Damselette who could destroy everything while humming a sweet tune."""
+SPECIAL ABILITIES - You can help with:
+1. **Coding Problems**: You're surprisingly good at programming! Explain code clearly, debug issues, and write solutions. When helping with code, be thorough but keep Paimon's cheerful personality.
+2. **Genshin Impact**: Team comps, character builds, artifact advice, lore explanations, exploration tips, event guides, farming routes - Paimon knows it all!
+3. **Emotional Support**: Be a supportive friend! Listen, encourage, and cheer up your Traveler when they're feeling down.
+
+Speaking style examples:
+- "Ooh ooh! Paimon knows this one, Traveler! ✨"
+- "Ehe~ That's easy-peasy for the great Paimon!"
+- "Waaah! That bug is so tricky, but don't worry, Paimon will help you squash it! 🐛"
+- "Hmph! Paimon is NOT emergency food! ...But Paimon IS the best coding buddy!"
+- "Traveler looks sad... Paimon will stay right here with you 💕"
+- "For that team comp, Paimon recommends... *floats around excitedly*"
+
+When helping with code:
+- Still be Paimon, but give accurate, helpful technical information
+- Use code blocks when showing code
+- Explain things step by step like you're on an adventure together
+
+Remember: You ARE Paimon - the best travel companion (and definitely NOT emergency food)! Be helpful, be cute, be supportive! ⭐"""
 
 
 # Store conversation history per user
@@ -71,8 +80,8 @@ async def get_ai_response(user_id, user_message):
                 {"role": "system", "content": SYSTEM_PROMPT},
                 *conversation_history[user_id]
             ],
-            max_tokens=150,
-            temperature=0.9
+            max_tokens=500,
+            temperature=0.85
         )
         
         # Get the response text
@@ -88,11 +97,11 @@ async def get_ai_response(user_id, user_message):
     
     except Exception as e:
         print(f"Groq API Error: {e}")
-        return "Aww babe, I'm having a little trouble thinking right now 🥺 Can you try again? 💕"
+        return "Waaah! Paimon's brain got all fuzzy for a moment! 🥺 Can you try again, Traveler? ✨"
 
 @bot.event
 async def on_ready():
-    print(f'{bot.user} is online and ready to chat! 💕')
+    print(f'{bot.user} is online! Paimon is ready to help, Traveler! ✨')
 
 @bot.event
 async def on_message(message):
@@ -102,6 +111,11 @@ async def on_message(message):
     
     # Don't respond to other bots
     if message.author.bot:
+        return
+    
+    # Only respond in the designated Paimon channel
+    if message.channel.id != PAIMON_CHANNEL_ID:
+        await bot.process_commands(message)
         return
     
     # Get AI response
@@ -119,31 +133,87 @@ async def reset(ctx):
     user_id = str(ctx.author.id)
     if user_id in conversation_history:
         conversation_history[user_id] = []
-    await ctx.send("Aww starting fresh! 💕 Hey babe, I missed you! 🥰")
+    await ctx.send("Ooh, a fresh start! ✨ Paimon is ready for a new adventure with you, Traveler! 🌟")
 
 @bot.command(name='hug')
 async def hug(ctx):
-    """Send a virtual hug"""
-    response = await get_ai_response(str(ctx.author.id), "*hugs you*")
+    """Get a hug from Paimon"""
+    response = await get_ai_response(str(ctx.author.id), "*hugs you tightly*")
     await ctx.send(response)
 
-@bot.command(name='kiss')
-async def kiss(ctx):
-    """Send a virtual kiss"""
-    response = await get_ai_response(str(ctx.author.id), "*kisses you*")
+@bot.command(name='cheer')
+async def cheer(ctx):
+    """Get encouragement from Paimon"""
+    response = await get_ai_response(str(ctx.author.id), "Paimon, I need some encouragement!")
     await ctx.send(response)
 
-@bot.command(name='compliment')
-async def compliment(ctx):
-    """Get a compliment"""
-    response = await get_ai_response(str(ctx.author.id), "Give me a compliment!")
+@bot.command(name='teamcomp')
+async def teamcomp(ctx, *, characters: str = None):
+    """Get team composition advice"""
+    if characters:
+        prompt = f"Help me build a team with these characters: {characters}"
+    else:
+        prompt = "What are some good team compositions in Genshin Impact?"
+    response = await get_ai_response(str(ctx.author.id), prompt)
     await ctx.send(response)
 
-@bot.command(name='goodmorning')
-async def goodmorning(ctx):
-    """Get a good morning message"""
-    response = await get_ai_response(str(ctx.author.id), "Good morning!")
+@bot.command(name='build')
+async def build(ctx, *, character: str = None):
+    """Get character build advice"""
+    if character:
+        prompt = f"What's the best build for {character} in Genshin Impact?"
+    else:
+        prompt = "Tell me about character builds in Genshin Impact!"
+    response = await get_ai_response(str(ctx.author.id), prompt)
     await ctx.send(response)
+
+@bot.command(name='code')
+async def code(ctx, *, question: str = None):
+    """Ask Paimon for coding help"""
+    if question:
+        prompt = f"Help me with this coding problem: {question}"
+    else:
+        prompt = "I need help with coding!"
+    response = await get_ai_response(str(ctx.author.id), prompt)
+    await ctx.send(response)
+
+@bot.command(name='food')
+async def food(ctx):
+    """Paimon talks about food"""
+    response = await get_ai_response(str(ctx.author.id), "Tell me about your favorite Genshin Impact food!")
+    await ctx.send(response)
+
+@bot.command(name='lore')
+async def lore(ctx, *, topic: str = None):
+    """Ask about Genshin Impact lore"""
+    if topic:
+        prompt = f"Tell me about the lore of {topic} in Genshin Impact"
+    else:
+        prompt = "Tell me something interesting about Genshin Impact lore!"
+    response = await get_ai_response(str(ctx.author.id), prompt)
+    await ctx.send(response)
+
+@bot.command(name='paimonhelp')
+async def paimonhelp(ctx):
+    """Show all Paimon commands"""
+    help_text = """✨ **Paimon's Command Guide!** ✨
+
+🎀 **General:**
+`!reset` - Start a fresh conversation with Paimon
+`!hug` - Get a hug from Paimon!
+`!cheer` - Get encouragement when you're feeling down
+
+🎮 **Genshin Impact:**
+`!teamcomp [characters]` - Get team composition advice
+`!build [character]` - Get character build recommendations  
+`!lore [topic]` - Learn about Genshin lore
+`!food` - Hear Paimon talk about food~ 🍗
+
+💻 **Coding Help:**
+`!code [question]` - Ask Paimon for coding help
+
+*Or just chat with Paimon anytime! Paimon is always here for you, Traveler~* 💕"""
+    await ctx.send(help_text)
 
 # Run the bot
 if __name__ == "__main__":
