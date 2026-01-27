@@ -84,7 +84,7 @@ async def get_ai_response(user_id, user_message):
                 {"role": "system", "content": SYSTEM_PROMPT},
                 *conversation_history[user_id]
             ],
-            max_tokens=500,
+            max_tokens=150,
             temperature=0.85
         )
         
