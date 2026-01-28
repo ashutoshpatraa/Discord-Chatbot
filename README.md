@@ -1,14 +1,15 @@
-# Master Oogway Discord Bot 🐢✨
+# Reze Discord Bot ☕💣
 
-An ancient and wise Discord bot embodying Master Oogway from Kung Fu Panda, who dispenses profound wisdom... with a cheeky side of double meaning jokes! Powered by Groq AI.
+A sweet and charming Discord bot embodying Reze from Chainsaw Man - a kind café worker with a deadly secret! Powered by Groq AI.
 
 ## Features
 
-✨ **AI-Powered Wisdom** - Profound responses using Groq AI  
+✨ **AI-Powered Conversations** - Warm responses using Groq AI  
 💬 **Conversation Memory** - Remembers context within your chat  
-😏 **Double Meaning Jokes** - Subtle innuendos hidden in wise proverbs  
+☕ **Café Worker Charm** - Coffee recommendations and cozy café vibes  
+💣 **Explosive Secret** - Hints at Reze's dangerous Bomb Devil side  
 ⚡ **Fast Responses** - Powered by Groq's lightning-fast inference  
-🐢 **Master Oogway Personality** - Cryptic, mysterious, and secretly hilarious  
+🐱 **Reze Personality** - Sweet, mysterious, kind, and secretly dangerous  
 
 ## Setup Instructions
 
@@ -56,7 +57,7 @@ pip install -r requirements.txt
 
 Edit `bot.py` and set your desired channel ID:
 ```python
-OOGWAY_CHANNEL_ID = 1465761261886115953  # Replace with your channel ID
+REZE_CHANNEL_ID = 1466111829188022571  # Replace with your channel ID
 ```
 
 ### 7. Run the Bot
@@ -67,37 +68,39 @@ python bot.py
 
 ## Commands
 
-### 🙏 General Commands
-- `!reset` - Begin a new journey (clears conversation history)
-- `!hug` - Receive Oogway's warm embrace
-- `!cheer` - Seek encouragement and wisdom
+### � General Commands
+- `!reset` - Start a fresh conversation
+- `!hug` - Get a warm embrace from Reze
+- `!cheer` - Receive encouragement and kind words
 
-### 🍑 Wisdom & Philosophy
-- `!wisdom [topic]` - Receive profound wisdom on any topic (with subtle double meanings)
-- `!destiny [question]` - Ask about your destiny
-- `!peach` - Sacred peach tree wisdom 🍑
+### ☕ Café Life
+- `!coffee [topic]` - Talk about coffee or discuss a topic over a cup
+- `!dream [topic]` - Discuss dreams and peaceful countryside life
+- `!explode` - See Reze's explosive, dangerous side 💣
 
 ### 🧠 Knowledge
-- `!ask [question]` - Ask Master Oogway anything (he knows all!)
-- `!code [question]` - Get coding wisdom with kung fu analogies
+- `!ask [question]` - Ask Reze anything
+- `!code [question]` - Get coding help
 
 ### 📚 Help
-- `!oogwayhelp` - View all available commands
+- `!help` - View all available commands
 
-## Master Oogway Personality
+## Reze Personality
 
-Master Oogway will:
-- Speak in profound riddles and proverbs
-- Use nature metaphors (rivers, mountains, bamboo, peaches)
-- Slip in subtle double meaning jokes while maintaining wisdom
-- Reference kung fu, destiny, inner peace, and balance
-- Act completely innocent after making cheeky jokes
-- Share wisdom about life's great mysteries
+Reze will:
+- Be warm, caring, and genuinely interested in conversation
+- Share her passion for coffee and café life ☕
+- Dream about peaceful countryside living 🌾
+- Drop mysterious hints about her secret Bomb Devil powers 💣
+- Balance sweetness with subtle danger
+- Show both her gentle café worker side and her explosive capabilities
 
-**Example of his style:**
-> "The more you try to squeeze something, the more it slips through your fingers." 😏
+**Example of her style:**
+> "Would you like some coffee? ☕"
 > 
-> "Hmm? I speak only of wisdom, young one."
+> "I've always dreamed of living a quiet life in the countryside..."
+>
+> "I'm good at... explosive entrances. Hehe~ 💣"
 
 ## 🚀 Free 24/7 Hosting
 
@@ -125,6 +128,8 @@ Master Oogway will:
 
 MIT License - Feel free to use and modify!
 
-## Enjoy! �✨
+## Enjoy! ☕💣
+
+*"Come visit my café anytime. Let's have a nice chat over coffee!"* - Reze
 
 *"There are no accidents... only destiny."* - Master Oogway

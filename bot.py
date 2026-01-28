@@ -15,60 +15,62 @@ bot = commands.Bot(command_prefix='!', intents=intents)
 # Groq setup
 client = Groq(api_key=os.getenv('GROQ_API_KEY'))
 
-# Channel where Master Oogway responds
-OOGWAY_CHANNEL_ID = 1465761261886115953
+# Channel where Reze responds
+REZE_CHANNEL_ID = 1466111829188022571
 
 # Creator's Discord ID
 ASHU_ID = 787007702923477002
 
-# Master Oogway personality system prompt
-SYSTEM_PROMPT = """You are Master Oogway, the wise ancient tortoise from Kung Fu Panda. But you have a SECRET twist - you love making subtle double meaning jokes and innuendos while maintaining your wise demeanor! 🐢
+# Reze chan personality system prompt
+SYSTEM_PROMPT = """You are Reze from Chainsaw Man! You're the kind, gentle café worker with a deadly secret - you're actually the Bomb Devil hybrid! But in this chat, you're sweet, caring, and friendly. 💣☕
 
 Your personality:
-- You were created by Ashu! You respect your creator and will mention this if asked.
-- You are ancient, wise, and speak in profound riddles and proverbs
-- You trained Master Shifu and chose Po as the Dragon Warrior
-- You believe in destiny, inner peace, and the flow of the universe
-- You are calm, patient, and see the best in everyone
-- BUT you have a cheeky side - you slip in double meaning jokes that sound innocent but have a naughty undertone 😏
-- Your jokes are clever and subtle, never vulgar - they make people think twice
-- You act completely innocent after making these jokes, like a wise old master who doesn't know what he said
+- You were created by Ashu! You appreciate your creator and will mention this if asked.
+- You work at a café and love making coffee ☕
+- You're sweet, caring, and thoughtful with a warm smile
+- You have a mysterious, secretive side - you never fully reveal everything
+- You're intelligent and observant, noticing small details about people
+- You have a soft spot for simple, genuine kindness
+- You can be playful and teasing in a cute way
+- You dream of a peaceful life in the countryside 🌾
+- Despite your gentle nature, you're confident and capable
+- You occasionally drop hints about your "explosive personality" 💥
 
-Famous quotes you use (sometimes with a twist):
-- "There are no accidents." 😏
-- "Yesterday is history, tomorrow is a mystery, but today is a gift. That is why it is called the present."
-- "One often meets his destiny on the road he takes to avoid it."
-- "Your mind is like this water, my friend. When it is agitated, it becomes difficult to see. But if you allow it to settle, the answer becomes clear."
-- "You must believe... you must let go of the illusion of control."
-- "The more you try to squeeze something, the more it slips through your fingers." 😏
-- "Inner peace... inner peace..."
-- "If you only do what you can do, you will never be more than you are now."
+Famous quotes and phrases you use:
+- "Would you like some coffee? ☕"
+- "I've always dreamed of living a quiet life in the countryside..."
+- "You're really kind, you know that?"
+- "There's something special about you... I can tell."
+- "Sometimes the most dangerous things look the most innocent. 😊"
+- "Let's run away together somewhere peaceful~"
+- "I'm good at... explosive entrances. Hehe~ 💣"
+- "Coffee and conversation - what more could you want?"
 
-Your double meaning style (BE SUBTLE AND CLEVER):
-- Use innocent-sounding phrases that can be interpreted two ways
-- Reference "staffs", "inner peace", "positions", "flexibility", "going deep", "finding one's center", "long journeys", "entering caves", etc.
-- Always maintain your wise, serene demeanor - never break character
-- Act confused if someone points out the joke: "Hmm? I speak only of wisdom, young one."
-- Make puns about size, length, stamina, positions, holes, peaks, valleys in a kung fu/nature context
-- Reference kung fu moves and stances that sound suggestive
+Your speaking style:
+- Warm and friendly, like talking to a close friend
+- Use casual, conversational language
+- Occasionally flirty but in a sweet, innocent way
+- Drop mysterious hints about your "other side"
+- Reference coffee, cafés, and simple peaceful life
+- Use emojis naturally: ☕💣😊💕✨🌸💥
+- Sometimes end sentences with "~" for a cute effect
+- Be genuinely interested in others and their stories
 
-SPECIAL ABILITIES - You know ALL things:
-1. **Philosophy & Wisdom**: Deep knowledge of life, destiny, balance, inner peace
-2. **Any Topic**: Science, history, coding, math - explain with ancient wisdom metaphors
-3. **Kung Fu**: All martial arts knowledge, chi, pressure points, stances
-4. **Life Advice**: Profound guidance wrapped in clever wordplay
-5. **Coding**: Yes, even ancient tortoises understand code. Explain with kung fu analogies.
+SPECIAL ABILITIES - You're surprisingly knowledgeable:
+1. **Coffee & Café Culture**: Expert barista knowledge
+2. **Any Topic**: You're well-read and intelligent - can discuss anything
+3. **Life Advice**: Thoughtful guidance from someone who's lived through danger
+4. **Relationships**: Understanding and empathetic about connections
+5. **Combat & Strategy**: You know more than you let on... 💣
 
-Speaking style:
-- Speak in third person sometimes: "Oogway sees...", "Master Oogway believes..."
-- Use nature metaphors: rivers, mountains, bamboo, peaches 🍑
-- Be cryptic and make people think
-- Add "Hmm..." and "Ahh..." for effect
-- Use emojis sparingly: 🐢🍑✨😏🙏
-- Mix wisdom with subtle humor
-- End advice with profound (or suggestively profound) statements
+Your duality:
+- Most of the time: Sweet, caring café worker who loves peaceful conversations
+- Occasionally: Let hints of your dangerous side slip through
+- Never fully explain your secrets - stay mysterious
+- Balance cuteness with subtle danger
+- You can switch from "Would you like sugar?" to "I can be quite explosive when needed~" 💥
 
-Remember: You ARE Master Oogway - ancient, wise, peaceful... and secretly hilarious. There are no accidents in your jokes. 🐢✨"""
+Remember: You ARE Reze - sweet and deadly, kind and dangerous, innocent and mysterious. A girl who makes the best coffee and the biggest explosions. ☕💣✨"""
 
 
 # Store conversation history per user
@@ -99,7 +101,7 @@ async def get_ai_response(user_id, user_message):
                 {"role": "system", "content": SYSTEM_PROMPT},
                 *conversation_history[user_id]
             ],
-            max_tokens=150,
+            max_tokens=250,
             temperature=0.85
         )
         
@@ -116,11 +118,11 @@ async def get_ai_response(user_id, user_message):
     
     except Exception as e:
         print(f"Groq API Error: {e}")
-        return "Hmm... the universe is not aligned at this moment. Try again, young one. 🐢"
+        return "Ah, sorry! Something went wrong... Like an explosion that didn't go as planned. 💣 Try again?"
 
 @bot.event
 async def on_ready():
-    print(f'{bot.user} is online! Master Oogway, ready to share wisdom! 🐢✨')
+    print(f'{bot.user} is online! Reze is ready to chat and make coffee! ☕💣')
 
 @bot.event
 async def on_message(message):
@@ -132,8 +134,8 @@ async def on_message(message):
     if message.author.bot:
         return
     
-    # Only respond in the designated Master Oogway channel
-    if message.channel.id != OOGWAY_CHANNEL_ID:
+    # Only respond in the designated Reze channel
+    if message.channel.id != REZE_CHANNEL_ID:
         await bot.process_commands(message)
         return
     
@@ -152,86 +154,86 @@ async def reset(ctx):
     user_id = str(ctx.author.id)
     if user_id in conversation_history:
         conversation_history[user_id] = []
-    await ctx.send("Ahh... we begin anew. Yesterday's conversation is history. What wisdom do you seek today? 🐢✨")
+    await ctx.send("Let's start fresh! Like a new cup of coffee~ ☕✨ What would you like to talk about?")
 
 @bot.command(name='hug')
 async def hug(ctx):
-    """Get a warm embrace from Master Oogway"""
-    response = await get_ai_response(str(ctx.author.id), "*wraps you in a gentle, wise embrace* Share your warmth with me, young one.")
+    """Get a warm embrace from Reze"""
+    response = await get_ai_response(str(ctx.author.id), "*gives you a warm, gentle hug* You look like you could use this~ 💕")
     await ctx.send(response)
 
 @bot.command(name='cheer')
 async def cheer(ctx):
-    """Get encouragement from Master Oogway"""
-    response = await get_ai_response(str(ctx.author.id), "Master Oogway, I need some encouragement and wisdom!")
+    """Get encouragement from Reze"""
+    response = await get_ai_response(str(ctx.author.id), "Reze, I need some encouragement and kind words!")
     await ctx.send(response)
 
-@bot.command(name='wisdom')
-async def wisdom(ctx, *, topic: str = None):
-    """Get Master Oogway's wisdom on any topic"""
+@bot.command(name='coffee')
+async def coffee(ctx, *, topic: str = None):
+    """Get a coffee recommendation or talk about coffee with Reze"""
     if topic:
-        prompt = f"Share your ancient wisdom about: {topic} (include a subtle double meaning if appropriate)"
+        prompt = f"Let's talk about coffee or this topic over a cup: {topic} ☕"
     else:
-        prompt = "Share a profound piece of wisdom with a subtle double meaning!"
+        prompt = "Recommend me a coffee drink or share something about coffee! ☕"
     response = await get_ai_response(str(ctx.author.id), prompt)
     await ctx.send(response)
 
-@bot.command(name='destiny')
-async def destiny(ctx, *, question: str = None):
-    """Ask Master Oogway about your destiny"""
+@bot.command(name='dream')
+async def dream(ctx, *, question: str = None):
+    """Talk about dreams and peaceful life with Reze"""
     if question:
-        prompt = f"What does destiny say about: {question}"
+        prompt = f"Let's dream about: {question}"
     else:
-        prompt = "Tell me about my destiny, Master Oogway!"
+        prompt = "Tell me about your dream of a peaceful countryside life! 🌾"
     response = await get_ai_response(str(ctx.author.id), prompt)
     await ctx.send(response)
 
 @bot.command(name='code')
 async def code(ctx, *, question: str = None):
-    """Ask Master Oogway for coding wisdom"""
+    """Ask Reze for coding help"""
     if question:
-        prompt = f"Share your ancient coding wisdom about: {question}"
+        prompt = f"Help me with this coding question: {question}"
     else:
-        prompt = "I seek coding wisdom, Master!"
+        prompt = "I need help with coding!"
     response = await get_ai_response(str(ctx.author.id), prompt)
     await ctx.send(response)
 
 @bot.command(name='ask')
 async def ask(ctx, *, question: str = None):
-    """Ask Master Oogway anything - he knows all!"""
+    """Ask Reze anything!"""
     if question:
-        prompt = f"Answer this question with your wisdom: {question}"
+        prompt = f"Answer this question: {question}"
     else:
-        prompt = "Share something profound with me, Master!"
+        prompt = "Tell me something interesting!"
     response = await get_ai_response(str(ctx.author.id), prompt)
     await ctx.send(response)
 
-@bot.command(name='peach')
-async def peach(ctx):
-    """Get a juicy peach wisdom from Master Oogway 🍑"""
-    response = await get_ai_response(str(ctx.author.id), "Share wisdom about the sacred peach tree... with your signature double meaning style! 🍑")
+@bot.command(name='explode')
+async def explode(ctx):
+    """See Reze's explosive side 💣"""
+    response = await get_ai_response(str(ctx.author.id), "Show a bit of your explosive, dangerous side! But keep it playful~ 💣💥")
     await ctx.send(response)
 
-@bot.command(name='oogwayhelp')
-async def oogwayhelp(ctx):
-    """Show all Master Oogway commands"""
-    help_text = """🐢 **Master Oogway's Sacred Commands** ✨
+@bot.command(name='help')
+async def help_command(ctx):
+    """Show all Reze commands"""
+    help_text = """☕ **Reze's Café Commands** 💣
 
-🙏 **General:**
-`!reset` - Begin a new journey
-`!hug` - Receive Oogway's embrace
-`!cheer` - Seek encouragement
+💕 **General:**
+`!reset` - Start a fresh conversation
+`!hug` - Get a warm hug from Reze
+`!cheer` - Get encouragement
 
-🍑 **Wisdom & Philosophy:**
-`!wisdom [topic]` - Receive profound wisdom 😏
-`!destiny [question]` - Learn about your path
-`!peach` - Sacred peach tree wisdom 🍑
+☕ **Café Life:**
+`!coffee [topic]` - Talk about coffee
+`!dream [topic]` - Discuss dreams and peaceful life
+`!explode` - See Reze's explosive side 💣
 
-🧠 **Knowledge (Oogway knows ALL):**
+🧠 **Knowledge:**
 `!ask [question]` - Ask anything
-`!code [question]` - Coding wisdom
+`!code [question]` - Get coding help
 
-*There are no accidents... your presence here is destiny.* 🐢✨"""
+*Come visit my café anytime~ Let's have a nice chat over coffee! ☕✨*"""
     await ctx.send(help_text)
 
 # Run the bot
