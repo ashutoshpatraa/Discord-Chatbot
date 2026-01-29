@@ -16,7 +16,7 @@ bot = commands.Bot(command_prefix='!', intents=intents, help_command=None)
 client = Groq(api_key=os.getenv('GROQ_API_KEY'))
 
 # Channel where Reze responds
-REZE_CHANNEL_ID = 1465739880104726794
+REZE_CHANNEL_ID = 1466406521842696334
 
 # Creator's Discord ID
 ASHU_ID = 787007702923477002
